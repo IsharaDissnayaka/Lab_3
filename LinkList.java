@@ -20,8 +20,8 @@ public class LinkList {
 
     public boolean FirstInsert(String name , double avag){
         Link newly = new Link(name, avag);
-         newly.next= First.next;
-         First.next=newly;
+         newly.next= First;
+         First=newly;
          return true;
     }
 
@@ -30,5 +30,33 @@ public class LinkList {
         First=First.next;
         return  temp;
     }
+
+    public Link DeleteFind(String name){
+        Link curr = First;
+        Link prew =First;
+        if(curr.next==null){
+            return null;
+        }
+
+
+        while(! curr.name.equals(name)){
+            prew=curr;
+            curr=curr.next;     
+        }
+
+        prew.next=curr.next;
+
+        if(curr ==First){
+            First=First.next;
+        }else{
+            prew.next=curr.next;
+        }
+
+        return curr;
+          
+
+    }
+
+    
 
 }
